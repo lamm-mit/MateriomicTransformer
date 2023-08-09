@@ -84,3 +84,8 @@ print (result.shape)
 ```
 
 Weights of trained model: Download [here...](https://www.dropbox.com/scl/fi/timpki8r2pvgoc4rw1nl7/statedict_V4031.pt?rlkey=ixndtsc6mndcw9rakd38ge771&dl=0)
+
+```
+fname='statedict_V4031.pt'
+model.load_state_dict(torch.load(fname))
+```
