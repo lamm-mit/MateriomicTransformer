@@ -15,7 +15,7 @@ Install OmegaFold and DSSP
 pip install git+https://github.com/HeliXonProtein/OmegaFold.git
 sudo apt-get install dssp
 ```
-
+Install MateriomicTransformer
 ```
 git clone https://github.com/lamm-mit/MateriomicTransformer/
 cd MateriomicTransformer
