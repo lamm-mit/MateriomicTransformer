@@ -7,6 +7,10 @@ MateriomicTransformer is a flexible language-model based deep learning strategy,
 ### Significance
 Predicting the properties of materials based on a flexible description of their structure, environment or process is a long-standing challenge in multiscale modeling. Our MaterioFormer language-model, trained to solve forward and inverse tasks, incorporates a deep learning capacity through attention and graph strategies, to yield a multimodal approach to model and design materials. Since our model is prompt-based and information is encoded consistently via byte-level utf8 tokenization, it can process diverse modalities of information, such as sequence data, description of tasks, and numbers and offers a flexible workflow that integrates human intelligence and AI. Autoregressive training, using pre-training against a large unlabeled dataset, allows for straightforward  adjustment of specific objectives. 
 
+![image](https://github.com/lamm-mit/MateriomicTransformer/assets/101393859/3f40c42f-10e0-496f-b565-773aabc3c4b1)
+
+A deep language model is developed that can solve forward and inverse protein modeling problems. Panel a shows two sample tasks, forward (e.g. calculate secondary structure content of a protein given its sequence) and inverse (design a protein to meet a specified secondary structure content). Overview of the approach implemented, generating molecular structures from amino acid sequences (panel b). The model realizes a variety of calculate and generate tasks to solve multiple protein analysis and design problems. At the heart of the algorithm used here is a text-based transformer architecture that builds interaction graphs using deep multi-headed attention, which serve as the input for a deep graph convolutional neural network to form a nested transformer-graph architecture (panel c). In a broader sense, the modeling conducted here relates an ultimate set of building blocks – here, byte-level utf8 encoded characters – to complex output, which can take many forms. This multiscale scheme captures complex emergent relationships between the basic building block of matter and resulting properties. DSSP is the acronym that refers to the Define Secondary Structure of Proteins (DSSP) algorithm.  
+
 ### Installation and use
 
 Install OmegaFold and DSSP
@@ -21,8 +25,11 @@ git clone https://github.com/lamm-mit/MateriomicTransformer/
 cd MateriomicTransformer
 pip install -e .
 ```
+![image](https://github.com/lamm-mit/MateriomicTransformer/assets/101393859/c8f3afe6-4c33-47fe-b279-cb80d6dc9cbb)
 
-Then open the Jupyter notebook for training/inference. 
+Overview of the MaterioFormer model, an autoregressive transformer-graph convolutional model built on text-based prompt input for diverse tasks. Panel a depicts details of the implementation of the model, with b showing the causal multi-headed graph self-attention strategy used. The model features a conventional scaled dot-product attention mechanism, using causal self-attention via the triangular mask M, complemented by a graph convolutional neural network. 
+
+Examples
 
 ```
 from   MateriomicTransformer import MoleculeTransformerGPT, count_parameters
@@ -84,6 +91,16 @@ print (result.shape)
 ```
 
 Weights of trained model: Download [here...](https://www.dropbox.com/scl/fi/timpki8r2pvgoc4rw1nl7/statedict_V4031.pt?rlkey=ixndtsc6mndcw9rakd38ge771&dl=0)
+
+### Example results
+
+![image](https://github.com/lamm-mit/MateriomicTransformer/assets/101393859/ff41971a-71ab-47cd-8afb-c2cea6fbcb46)
+
+Generative tasks solved after training stage III (see Figure 3 for an overview), showing examples for generating new proteins based on given ratios of secondary structure content. The designed sequences are shown on the left, images of the folded proteins in the center, and a comparison of the design objective (labeled as GT) with the actually obtained secondary structure content (Prediction) shown on the right (for DSSP8 and DSSP3, see Table 1 in paper for definitions). All proteins visualized in this paper are colored (per residue) by the confidence score 50). 
+
+![image](https://github.com/lamm-mit/MateriomicTransformer/assets/101393859/e0d451a3-2400-4432-99d8-56177f7937e6)
+
+Using an amino acid sequence extracted from an existing protein, Sericin 1 (bombyx mori, P07856, SERI1_BOMMO, ser1 gene), and re-engineering the natural protein towards particular design objectives. Herein, panel a shows the original proteins structure and sequence of sericin. Panel b shows a sequence completion task, where the initial sequence is continued in an unconstrained manner. Panel c shows a design task where the design objective is provided alongside the original sequence and then continued to meet the design task. The design task in this case is to generate an alpha-helical protein, which is indeed found towards the end of the protein.  Panels d shows a similar example, however, with the design task to generate a beta-sheet rich protein. This task is more difficult, but after a few trials a solution that meets the design target is obtained. Finally, panel e shows another example where the design task is given is a target with 50% beta-sheet, 20 random coil. This results in a more complex overall protein structure.
 
 ```
 fname='statedict_V4031.pt'
