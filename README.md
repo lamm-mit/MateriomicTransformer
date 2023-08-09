@@ -29,7 +29,7 @@ pip install -e .
 
 Overview of the MaterioFormer model, an autoregressive transformer-graph convolutional model built on text-based prompt input for diverse tasks. Panel a depicts details of the implementation of the model, with b showing the causal multi-headed graph self-attention strategy used. The model features a conventional scaled dot-product attention mechanism, using causal self-attention via the triangular mask M, complemented by a graph convolutional neural network. 
 
-Examples
+### How to set up neural net and sample
 
 ```
 from   MateriomicTransformer import MoleculeTransformerGPT, count_parameters
