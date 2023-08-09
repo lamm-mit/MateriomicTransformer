@@ -11,6 +11,8 @@ Predicting the properties of materials based on a flexible description of their 
 
 A deep language model is developed that can solve forward and inverse protein modeling problems. Panel a shows two sample tasks, forward (e.g. calculate secondary structure content of a protein given its sequence) and inverse (design a protein to meet a specified secondary structure content). Overview of the approach implemented, generating molecular structures from amino acid sequences (panel b). The model realizes a variety of calculate and generate tasks to solve multiple protein analysis and design problems. At the heart of the algorithm used here is a text-based transformer architecture that builds interaction graphs using deep multi-headed attention, which serve as the input for a deep graph convolutional neural network to form a nested transformer-graph architecture (panel c). In a broader sense, the modeling conducted here relates an ultimate set of building blocks – here, byte-level utf8 encoded characters – to complex output, which can take many forms. This multiscale scheme captures complex emergent relationships between the basic building block of matter and resulting properties. DSSP is the acronym that refers to the Define Secondary Structure of Proteins (DSSP) algorithm.  
 
+Paper: J. Appl. Physics, 2023 or https://arxiv.org/abs/2305.04934 
+
 ### Installation and use
 
 Install OmegaFold and DSSP
